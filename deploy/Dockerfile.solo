@@ -1,4 +1,4 @@
-#docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY -p 2342:2342/udp -p 6001:6001 neilo40/private:restful-doom
+#docker run -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY -p 2342:2342/udp -p 6003:6003 neilo40/private:restful-doom-solo
 
 FROM ubuntu:zesty
 WORKDIR /app
@@ -10,8 +10,8 @@ ADD chocpkg/install/lib/libSDL2_net-2.0.so.0 /home/neil/git/restful-doom/chocpkg
 ADD deploy/default.cfg /root/.restful-doom/default.cfg
 ADD deploy/restful-doom.cfg /root/.restful-doom/restful-doom.cfg
 EXPOSE 2342
-EXPOSE 6001
+EXPOSE 6003
 RUN apt update
 RUN apt -y install libpng16-16
 RUN apt -y install x11-apps
-CMD ["/app/restful-doom", "-iwad", "/app/doom1.wad", "-apiport", "6001", "-server", "-deathmatch"]
+CMD ["/app/restful-doom", "-iwad", "/app/doom1.wad", "-apiport", "6003"]
