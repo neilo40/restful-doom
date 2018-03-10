@@ -20,6 +20,7 @@ extern int key_right;
 extern int key_left;
 extern int key_up;
 extern int key_down;
+extern int key_fire;
 extern int key_strafeleft;
 extern int key_straferight;
 extern int consoleplayer;
@@ -164,7 +165,11 @@ api_response_t API_PostPlayerAction(cJSON *req)
     }
     else if (strcmp(type, "shoot") == 0)
     {
-        P_FireWeapon(&players[consoleplayer]);
+        keys_down[key_fire] = 5;
+        event.type = ev_keydown;
+        event.data1 = key_fire;
+        event.data2 = 0;
+        D_PostEvent(&event);
     }
     else 
     {

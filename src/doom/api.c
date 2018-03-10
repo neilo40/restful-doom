@@ -416,7 +416,7 @@ void turnPlayer()
             direction = 1;
 
         if (remaining == 0) {
-            target_angle =- 1;
+            target_angle = -1;
             return;
         }
         else
